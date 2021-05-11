@@ -65,7 +65,7 @@ class Comment(db.Model):
     parent_post = relationship("BlogPost", back_populates="comments")
     comment_author = relationship("User", back_populates="comments")
     text = db.Column(db.Text, nullable=False)
-db.create_all()
+#db.create_all()
 
 
 def admin_only(f):
@@ -89,7 +89,7 @@ def register():
     if form.validate_on_submit():
 
         if User.query.filter_by(email=form.email.data).first():
-            print(User.query.filter_by(email=form.email.data).first())
+
             #User already exists
             flash("You've already signed up with that email, log in instead!")
             return redirect(url_for('login'))
